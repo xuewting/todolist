@@ -8,7 +8,7 @@
           <p>今天做些什么呢：</p>
         </a-col>
         <a-col :span="14">
-          <a-input placeholder="输入新的待做任务" v-model="current" />
+          <a-input placeholder="输入新的待做任务" v-model="current" @keydown.enter="addNewItem"/>
         </a-col>
         <a-col :span="4">
           <a-button type="primary" @click="addNewItem">添加</a-button>

@@ -7,6 +7,7 @@
     @change="finishItem">
       {{detail.value}}
     </a-checkbox>
+    
     <span class="item-close">
         <a-button type="danger" @click="deleteItem">取消</a-button>
       </span>
