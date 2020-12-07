@@ -23,16 +23,14 @@
       @deleteItem="deleteItem" />
     </div>
 
-    <todo-list-report
-    :style="reportStyle"
-    :finishedcount="finishedcount"
-    :total="todolist.length" />
+    <todo-list-report :style="reportStyle" />
   </div>
 </template>
 
 <script>
 import TodoItem from './TodoItem';
 import TodoListReport from './TodoListReport';
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'todo-list',
@@ -53,26 +51,30 @@ export default {
     TodoListReport,
   },
   methods: {
+    ...mapMutations(['addCount', 'subCount', 'addFinishedCount', 'subFinishedCount']),
     addNewItem() {
+      this.addCount();
       this.todolist.push({
         id: this.id ++,
         value: this.current,
         finished: false});
+      this.current = ''
     },
     findItem(p) {
       return p.id === this.currentid;
     },
     deleteItem(id) {
+      this.subCount();
       this.currentid = id;
       let index = this.todolist.findIndex(this.findItem);
-      this.todolist[index].finished ? -- this.finishedcount : '';
+      this.todolist[index].finished ? this.subFinishedCount() : '';
       this.todolist.splice(index, 1);
     },
     finishedCount(finished, id) {
       this.currentid = id;
       let index = this.todolist.findIndex(this.findItem);
       this.todolist[index].finished = finished;
-      finished ? ++ this.finishedcount : -- this.finishedcount;
+      finished ? this.addFinishedCount() : this.subFinishedCount();
     },
   },
 };

@@ -7,10 +7,13 @@
     @change="finishItem">
       {{detail.value}}
     </a-checkbox>
-    
-    <span class="item-close">
-        <a-button type="danger" @click="deleteItem">取消</a-button>
-      </span>
+
+    <a-button
+    type="danger"
+    :style="{float: 'right'}"
+    @click="deleteItem">
+      取消
+    </a-button>
   </div>
 </template>
 
@@ -38,6 +41,7 @@ export default {
 
 <style lang="less" scoped>
 .item-box {
+  width: 100%;
   display: block;
   text-align: left;
   .checkbox {
