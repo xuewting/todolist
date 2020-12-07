@@ -22,6 +22,6 @@ const store = new Vuex.Store({
       state.finishedCount -= 1;
     }
   }
-})
+});
 
 export default store;

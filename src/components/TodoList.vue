@@ -2,6 +2,7 @@
   <div class="todo-box">
     <h1>TodoList</h1>
 
+    <!-- S 任务输入框 -->
     <div class="todo-input">
       <a-row>
         <a-col :span="6">
@@ -15,15 +16,20 @@
         </a-col>
       </a-row>
     </div>
+    <!-- E 任务输入框 -->
 
+    <!-- S 任务列表 -->
     <div class="item-line" v-for="item in todolist" :key="item.id">
       <todo-item
       :detail="item"
       @finishedCount="finishedCount"
       @deleteItem="deleteItem" />
     </div>
+    <!-- E 任务列表 -->
 
+    <!-- S 任务报告 -->
     <todo-list-report :style="reportStyle" />
+    <!-- E 任务报告 -->
   </div>
 </template>
 
@@ -34,6 +40,10 @@ import { mapMutations } from 'vuex'
 
 export default {
   name: 'todo-list',
+  components: {
+    TodoItem,
+    TodoListReport,
+  },
   data() {
     return {
       id: 0,
@@ -45,10 +55,6 @@ export default {
         marginTop: '20px',
       },
     };
-  },
-  components: {
-    TodoItem,
-    TodoListReport,
   },
   methods: {
     ...mapMutations(['addCount', 'subCount', 'addFinishedCount', 'subFinishedCount']),

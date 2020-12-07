@@ -21,7 +21,7 @@
 export default {
   name: 'todo-item',
   props: {
-    detail: {},
+    detail: null,
   },
   data() {
     return {
