@@ -5,21 +5,36 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
-    finishedCount: 0,
+    id: 0,
+    todoList: []
+  },
+  getters: {
+    doneTodos: (state) => {
+      return state.todoList.filter((todo) => todo.done);
+    },
+    doneTodosCount: (state, getters) => {
+      return getters.doneTodos.length;
+    },
+    todosCount: (state) => {
+      return state.todoList.length;
+    }
   },
   mutations: {
-    addCount(state) {
-      state.count += 1;
+    addItem(state, item) {
+      state.todoList.push({ ...item, id: state.id });
+      state.id++;
     },
-    addFinishedCount(state) {
-      state.finishedCount += 1;
+    deleteItem(state, id) {
+      let todoList = state.todoList;
+      state.todoList.splice(
+        todoList.findIndex((item) => item.id === id),
+        1
+      );
     },
-    subCount(state) {
-      state.count -= 1;
-    },
-    subFinishedCount(state) {
-      state.finishedCount -= 1;
+    changeItemState(state, id) {
+      let index = state.todoList.findIndex((item) => item.id === id);
+      console.log(state.todoList[index].done);
+      state.todoList[index].done = !!state.todoList[index].done;
     }
   }
 });

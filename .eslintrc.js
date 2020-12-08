@@ -1,22 +1,24 @@
-export default {
-  "root": true,
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-  },
-  "extends": "plugin:vue/recommended",
-  "rules": {
-    "semi": "error",
-    "eqeqeq": [2, "allow-null"],
-    "no-console": "off",
-    "no-constant-condition": "error",
-    "no-extra-semi": "warn",
-    "no-ex-assign": 2,
-    "no-extra-boolean-cast": 2,
-    "no-empty-pattern": 2,
-    "no-floating-decimal": 2,
-    "no-invalid-this": 2,
-    "no-redeclare": 2
-  }
-}
+module.exports = {
+    "env": {
+        "browser": true,
+        // "es2017": true
+    },
+    "extends": ['mixup', 'mixup/vue'],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue",
+        "prettier"
+    ],
+    "rules": {
+      'prettier/prettier': 'error',
+      "vue/component-definition-name-casing": "off",
+      "comma-dangle": "error",
+      "semi": "error",
+      "default-case-last": "off",
+      "no-useless-backreference": "off",
+      "vue/v-on-function-call": "off"
+    }
+};

@@ -1,16 +1,16 @@
 <template>
   <div>
-    <span>共{{count}}个代办事项，已完成{{finishedCount}}</span>
+    <span>共{{ todosCount }}个代办事项，已完成{{ doneTodosCount }}</span>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "todo-list-report",
+  name: 'todo-list-report',
   computed: {
-    ...mapState(['count', 'finishedCount'])
+    ...mapGetters(['todosCount', 'doneTodosCount'])
   }
-}
+};
 </script>
