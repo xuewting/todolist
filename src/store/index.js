@@ -33,7 +33,6 @@ const store = new Vuex.Store({
     },
     changeItemState(state, id) {
       let index = state.todoList.findIndex((item) => item.id === id);
-      console.log(state.todoList[index].done);
       state.todoList[index].done = !!state.todoList[index].done;
     }
   }

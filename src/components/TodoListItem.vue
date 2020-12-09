@@ -32,10 +32,12 @@ export default {
   display: block;
   width: 100%;
   text-align: left;
+
   .checkbox {
     font-size: 25px;
   }
 }
+
 .finished {
   color: lightgray;
   text-decoration: line-through;

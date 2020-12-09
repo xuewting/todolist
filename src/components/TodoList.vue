@@ -83,8 +83,8 @@ export default {
   .todo-input {
     p {
       height: 32px;
-      line-height: 32px;
       font-size: 18px;
+      line-height: 32px;
       text-align: right;
     }
   }
